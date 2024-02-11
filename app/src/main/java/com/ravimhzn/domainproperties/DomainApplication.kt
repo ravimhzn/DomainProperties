@@ -8,6 +8,6 @@ class DomainApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        //Todo
+        //Handle classes that needs to be initialised at the start of app
     }
 }

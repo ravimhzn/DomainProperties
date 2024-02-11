@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import com.ravimhzn.domainproperties.DomainApplication
 import com.ravimhzn.domainproperties.environment.EnvReader
 import com.ravimhzn.domainproperties.network.ApiService
+import com.ravimhzn.domainproperties.util.NetworkUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,6 +25,10 @@ class ApplicationModule {
     @Provides
     fun provideApplication(@ApplicationContext app: Context): DomainApplication =
         app.applicationContext as DomainApplication
+
+    @Singleton
+    @Provides
+    fun provideNetworkUtil(@ApplicationContext context: Context) = NetworkUtil(context)
 
     @Singleton
     @Provides
