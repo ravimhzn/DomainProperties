@@ -52,7 +52,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.compose.navigation)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.multidex)
     implementation(libs.google.gson)
+
+    implementation (libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.logging.interceptor)
 
     implementation(libs.hilt.android)
     testImplementation(libs.hilt.android.testing)
