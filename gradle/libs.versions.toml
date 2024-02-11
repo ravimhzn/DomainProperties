@@ -1,0 +1,57 @@
+[versions]
+android-gradle-plugin = "8.1.2"
+kotlin = "1.9.20"
+compose = "1.6.1"
+compose-compiler = "1.5.4"
+compose-material3 = "1.2.0"
+androidx-activityCompose = "1.8.2"
+kotlinx-serialization = "1.6.10"
+androidx-lifecycle = "2.7.0"
+compose-navigation = "2.7.7"
+androidx-appcompat = "1.6.1"
+google-gson = "2.9.0"
+hiltVersion = "2.48.1"
+coilDependencyVersion = "2.4.0"
+junit = "4.13.2"
+junit-ktx = "1.1.5"
+androidx-junit = "1.1.5"
+composeBomDate = "2024.02.00"
+mockkVersion="1.13.7"
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-graphics = { module = "androidx.compose.ui:ui-graphics", version.ref = "compose" }
+compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+google-gson = { module = "com.google.code.gson:gson", version.ref = "google-gson" }
+
+#Coil
+coil = { module = "io.coil-kt:coil", version.ref = "coilDependencyVersion" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilDependencyVersion" }
+
+#UT
+junit = { module = "junit:junit", version.ref = "junit" }
+androidx-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "junit-ktx" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBomDate" }
+compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+io-mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
+
+#DI
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltVersion" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "android-gradle-plugin" }
+androidLibrary = { id = "com.android.library", version.ref = "android-gradle-plugin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinx-serialization" }
