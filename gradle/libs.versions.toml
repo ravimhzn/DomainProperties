@@ -7,6 +7,7 @@ compose-material3 = "1.2.0"
 androidx-activityCompose = "1.8.2"
 kotlinx-serialization = "1.6.10"
 androidx-lifecycle = "2.7.0"
+multidex = "2.0.1"
 compose-navigation = "2.7.7"
 androidx-appcompat = "1.6.1"
 google-gson = "2.9.0"
@@ -17,6 +18,8 @@ junit-ktx = "1.1.5"
 androidx-junit = "1.1.5"
 composeBomDate = "2024.02.00"
 mockkVersion="1.13.7"
+retrofitVersion = "2.9.0"
+loggingInterceptorVersion = "4.12.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -30,9 +33,15 @@ compose-material3 = { module = "androidx.compose.material3:material3", version.r
 
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
 androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "google-gson" }
+
+#Network
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptorVersion" }
 
 #Coil
 coil = { module = "io.coil-kt:coil", version.ref = "coilDependencyVersion" }
