@@ -3,6 +3,7 @@ package com.ravimhzn.domainproperties.framework
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
+import com.ravimhzn.domainproperties.model.PropertyRequest
 import com.ravimhzn.domainproperties.util.Callable
 import com.ravimhzn.domainproperties.util.LOG_ERROR
 import com.ravimhzn.domainproperties.util.NetworkUtil
@@ -16,12 +17,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import retrofit2.Response
 import java.io.Serializable
 import javax.inject.Inject
 
-class BaseViewModel @Inject constructor() : ViewModel() {
+/**
+ * All the network response/ error methods on this class are only samples and could be modified accourding to need.
+ */
+open class BaseViewModel @Inject constructor() : ViewModel() {
 
     @Inject
     lateinit var networkUtil: NetworkUtil
@@ -50,24 +56,26 @@ class BaseViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun <T> handleEnqueue(response: Response<T>) {
-        if (response.isSuccessful) {
-            response.body()?.let {
-                try {
+        try {
+            if (response.isSuccessful) {
+                response.body()?.let {
                     onData(response.body() as Serializable)
-
-                } catch (e: Exception) {
-                    Log.e(LOG_ERROR,"${response.errorMessage()} :: $e")
+                } ?: run {
+                    Log.e(LOG_ERROR, response.errorMessage())
                     onError(getDefaultError())
                 }
-            } ?: run {
-                Log.e(LOG_ERROR, response.errorMessage())
-                onError(getDefaultError())
+            } else {
+                handleError(response)
             }
-
-        } else {
-            handleError(response)
+        } catch (e: HttpException) {
+            Log.e(LOG_ERROR, "${response.errorMessage()} :: $e")
+            onError(getDefaultError())
+        } catch (e: Throwable) {
+            Log.e(LOG_ERROR, "${response.errorMessage()} :: $e")
+            onError(getDefaultError())
         }
     }
+
     /**
      * Parse the error from Network API.
      * Since we don't know the proper error format coming from network,
@@ -84,7 +92,7 @@ class BaseViewModel @Inject constructor() : ViewModel() {
             statusCode = errorMessage?.statusCode ?: ""
             statusMessage = errorMessage?.statusMessage ?: ""
         } catch (e: Exception) {
-            Log.e(LOG_ERROR,"${response.errorMessage()}\t$e")
+            Log.e(LOG_ERROR, "${response.errorMessage()}\t$e")
         }
 
         val error = NetworkError(
@@ -117,7 +125,7 @@ class BaseViewModel @Inject constructor() : ViewModel() {
         _uiState.value = State.Loading
     }
 
-    fun onData(data: Serializable) {
+    open fun onData(data: Serializable) {
         _uiState.value = State.Loaded(data)
     }
 
@@ -125,11 +133,11 @@ class BaseViewModel @Inject constructor() : ViewModel() {
         try {
             _uiState.value = State.Error(error)
             error.statusMessage?.let {
-                Log.e(LOG_ERROR,"Exception :: $it")
+                Log.e(LOG_ERROR, "Exception :: $it")
             }
-            Log.e(LOG_ERROR,"BaseViewModel :: onError called")
+            Log.e(LOG_ERROR, "BaseViewModel :: onError called")
         } catch (e: Exception) {
-            Log.e(LOG_ERROR,"Exception :: $e")
+            Log.e(LOG_ERROR, "Exception :: $e")
         }
     }
 
