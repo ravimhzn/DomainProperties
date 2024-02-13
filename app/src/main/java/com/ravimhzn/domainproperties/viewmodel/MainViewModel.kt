@@ -1,12 +1,14 @@
 package com.ravimhzn.domainproperties.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ravimhzn.domainproperties.framework.BaseViewModel
-import com.ravimhzn.domainproperties.model.PropertyRequest
+import com.ravimhzn.domainproperties.model.PropertyResponse
+import com.ravimhzn.domainproperties.navigation.Screen
 import com.ravimhzn.domainproperties.repository.DomainPropertyDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.io.Serializable
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,17 +16,15 @@ class MainViewModel @Inject constructor(
     private val propertyDataSource: DomainPropertyDataSource
 ) : BaseViewModel() {
 
-    fun getPropertyResponse() {
+    init {
+        getPropertyResponse(Screen.RENT)
+    }
+
+    private fun getPropertyResponse(screen: Screen) {
         viewModelScope.launch {
             val list = arrayListOf<String>()
             list.add("Apartment/ Unit/ Flat")
-            propertyDataSource.getProperty(PropertyRequest(list, "rent"))
-            enqueue(propertyDataSource.getProperty(PropertyRequest(list, "rent")))
+            enqueue(propertyDataSource.getPropertyViaQuery(list, screen.route.lowercase()))
         }
-    }
-
-    override fun onData(data: Serializable) {
-        super.onData(data)
-        println("debug --> OnData:: $data")
     }
 }

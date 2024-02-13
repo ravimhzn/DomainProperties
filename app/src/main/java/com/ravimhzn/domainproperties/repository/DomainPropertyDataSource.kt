@@ -7,4 +7,10 @@ import retrofit2.Response
 interface DomainPropertyDataSource {
 
     suspend fun getProperty(request: PropertyRequest): Response<PropertyResponse>
+
+    suspend fun getPropertyViaQuery(
+        dwelling: List<String>,
+        searchType: String
+    ): Response<PropertyResponse>
+
 }

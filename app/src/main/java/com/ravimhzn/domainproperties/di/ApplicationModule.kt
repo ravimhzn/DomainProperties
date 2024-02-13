@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import com.ravimhzn.domainproperties.DomainApplication
 import com.ravimhzn.domainproperties.environment.EnvReader
 import com.ravimhzn.domainproperties.network.ApiService
+import com.ravimhzn.domainproperties.network.NetworkInterceptor
 import com.ravimhzn.domainproperties.util.NetworkUtil
 import dagger.Module
 import dagger.Provides
@@ -48,6 +49,7 @@ class ApplicationModule {
         val okHttpClientBuilder = OkHttpClient.Builder()
             .readTimeout(envReader.config.timeout.toLong(), TimeUnit.SECONDS)
             .connectTimeout(envReader.config.timeout.toLong(), TimeUnit.SECONDS)
+            .addInterceptor(NetworkInterceptor())
         //Add interceptors as per requirement such as OAuth/Network/Error/Cache/LogInterceptors...etc!!
         return okHttpClientBuilder.build()
     }

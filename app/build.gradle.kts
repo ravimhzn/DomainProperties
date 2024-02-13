@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.androidx.activity.compose)
     implementation(libs.compose.graphics)
+    implementation(libs.compose.liveData)
 
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.runtime)
@@ -56,7 +57,7 @@ dependencies {
     implementation(libs.androidx.multidex)
     implementation(libs.google.gson)
 
-    implementation (libs.retrofit)
+    implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.logging.interceptor)
 
@@ -64,11 +65,15 @@ dependencies {
     testImplementation(libs.hilt.android.testing)
     kapt(libs.hilt.android.compiler)
 
+    // Coil
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
+
     testImplementation(libs.junit)
     testImplementation(libs.androidx.junit.ktx)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.compose.bom)
     androidTestImplementation(libs.compose.ui.test.junit4)
     debugImplementation(libs.compose.ui.tooling)
-    testImplementation (libs.io.mockk)
+    testImplementation(libs.io.mockk)
 }

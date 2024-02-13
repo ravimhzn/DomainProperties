@@ -25,9 +25,8 @@ import com.ravimhzn.domainproperties.util.StringUtils
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyComposeToolbar(
-    appTitle: String = StringUtils.appTitle,
+    appTitle: String = StringUtils.appTitleRent,
     displayMenu: Boolean = true,
-    onMenuRentListener: () -> Unit = {},
     onMenuBuyListener: () -> Unit = {}
 ) {
     var showMenu by remember { mutableStateOf(false) }
@@ -58,12 +57,6 @@ fun MyComposeToolbar(
                     expanded = showMenu,
                     onDismissRequest = { showMenu = false }
                 ) {
-                    DropdownMenuItem(
-                        text = { Text(text = StringUtils.menuRent) },
-                        onClick = {
-                            showMenu = false
-                            onMenuRentListener.invoke()
-                        })
                     DropdownMenuItem(
                         text = { Text(text = StringUtils.menuBuy) },
                         onClick = {
