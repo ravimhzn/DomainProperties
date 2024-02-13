@@ -2,7 +2,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.kotlinKapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -61,6 +62,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     testImplementation(libs.hilt.android.testing)
+    kapt(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     testImplementation(libs.androidx.junit.ktx)
