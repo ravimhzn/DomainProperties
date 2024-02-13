@@ -9,43 +9,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.ravimhzn.domainproperties.framework.BaseActivity
+import com.ravimhzn.domainproperties.navigation.SetUpNavGraph
 import com.ravimhzn.domainproperties.viewmodel.VoidViewModel
 import com.ravimhzn.domainproperties.ui.theme.DomainPropertiesTheme
 import com.ravimhzn.domainproperties.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<MainViewModel>() {
+class MainActivity : BaseActivity<VoidViewModel>() {
+
+    private lateinit var navController: NavHostController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getPropertyResponse()
         setContent {
             DomainPropertiesTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                navController = rememberNavController()
+                SetUpNavGraph(navController)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DomainPropertiesTheme {
-        Greeting("Android")
     }
 }

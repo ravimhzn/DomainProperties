@@ -18,6 +18,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             val list = arrayListOf<String>()
             list.add("Apartment/ Unit/ Flat")
+            propertyDataSource.getProperty(PropertyRequest(list, "rent"))
             enqueue(propertyDataSource.getProperty(PropertyRequest(list, "rent")))
         }
     }

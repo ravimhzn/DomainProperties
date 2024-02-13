@@ -141,7 +141,7 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    private fun emptyState() {
+    fun emptyState() {
         _uiState.value = State.Empty
     }
 
