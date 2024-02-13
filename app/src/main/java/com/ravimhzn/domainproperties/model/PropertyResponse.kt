@@ -2,7 +2,6 @@ package com.ravimhzn.domainproperties.model
 
 import java.io.Serializable
 
-//Todo filter only what's required
 data class PropertyResponse(
     val allows_immediate_property_alert: Boolean,
     val new_results: Any,

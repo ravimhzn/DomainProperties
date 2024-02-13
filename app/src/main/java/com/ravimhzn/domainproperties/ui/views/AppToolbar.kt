@@ -25,7 +25,7 @@ import com.ravimhzn.domainproperties.util.StringUtils
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyComposeToolbar(
-    appTitle: String = StringUtils.appTitle,
+    appTitle: String = StringUtils.appTitleRent,
     displayMenu: Boolean = true,
     onMenuRentListener: () -> Unit = {},
     onMenuBuyListener: () -> Unit = {}
