@@ -1,13 +1,15 @@
 package com.ravimhzn.domainproperties.model
 
+import java.io.Serializable
+
 data class SearchResult(
     val additional_features: List<String>,
-    val address: String,
-    val advertiser: Advertiser,
+    val address: String?,
+    val advertiser: Advertiser?,
     val auction_date: String,
-    val bathroom_count: Double,
-    val bedroom_count: Double,
-    val carspace_count: Int,
+    val bathroom_count: Double?,
+    val bedroom_count: Double?,
+    val carspace_count: Int?,
     val date_listed: String,
     val dwelling_type: String,
     val earliest_inspections: List<EarliestInspection>,
@@ -22,8 +24,8 @@ data class SearchResult(
     val listing_type: String,
     val media: List<Media>,
     val metadata: Metadata,
-    val price: String,
+    val price: String?,
     val project: Project,
     val promo_level: String,
     val topspot: Topspot
-)
+): Serializable

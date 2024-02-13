@@ -3,13 +3,16 @@ package com.ravimhzn.domainproperties.model
 import java.io.Serializable
 
 data class PropertyResponse(
-    val allows_immediate_property_alert: Boolean,
-    val new_results: Any,
-    val results_returned: Int,
-    val results_total: Int,
-    val school_metadata: Any,
-    val search_insights: SearchInsights,
     val search_results: List<SearchResult>,
-    val tracking: Tracking,
-    val tracking_metadata: TrackingMetadata
-) : Serializable
+) : Serializable {
+
+    fun getFilteredSearchResult(): List<SearchResult> {
+        val filteredList =
+            search_results.filter { it.price == "Contact Agent" || it.price == "Auction" || it.price?.contains("$") == true }
+        println("###### debug --> Filtered Search Results :: ${filteredList.size}")
+        for (list in filteredList) {
+            println("###### debug --> $list")
+        }
+        return filteredList
+    }
+}
