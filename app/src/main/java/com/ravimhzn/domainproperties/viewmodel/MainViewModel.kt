@@ -51,6 +51,5 @@ class MainViewModel @Inject constructor(
                 _buyerPropertyResponse.value = data
             }
         }
-
     }
 }

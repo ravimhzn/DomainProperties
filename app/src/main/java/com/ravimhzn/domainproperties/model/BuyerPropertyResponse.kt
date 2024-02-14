@@ -1,7 +1,5 @@
 package com.ravimhzn.domainproperties.model
 
-import android.util.Log
-import com.ravimhzn.domainproperties.util.LOG_INFO
 import java.io.Serializable
 
 data class BuyerPropertyResponse(
@@ -15,7 +13,6 @@ data class BuyerPropertyResponse(
                     "$"
                 ) == true
             }
-        Log.i(LOG_INFO, "Buyer Filtered Search Results :: ${filteredList?.size}")
         return filteredList
     }
 }

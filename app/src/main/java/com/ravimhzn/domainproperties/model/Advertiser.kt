@@ -1,7 +1,6 @@
 package com.ravimhzn.domainproperties.model
 
 data class Advertiser(
-    val agency_listing_contacts: List<AgencyListingContacts>,
     val id: Int,
     val images: Images,
     val name: String,
