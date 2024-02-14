@@ -13,7 +13,7 @@ class SampleComposeUITest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
-    
+
     @Test
     fun useAppContext() {
         // Context of the app under test.
