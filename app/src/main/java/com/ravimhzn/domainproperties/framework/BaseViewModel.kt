@@ -72,7 +72,6 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
             onError(getDefaultError())
         } catch (e: Throwable) {
             Log.e(LOG_ERROR, "${response.errorMessage()} :: $e")
-            onError(getDefaultError())
         }
     }
 
@@ -100,16 +99,6 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
             statusMessage
         )
         onError(error)
-    }
-
-    fun checkInternetConnection(): Boolean {
-        val connected = isInternetConnected()
-        //Todo use state
-        return connected
-    }
-
-    private fun isInternetConnected(): Boolean {
-        return networkUtil.isInternetAvailable()
     }
 
     /**
