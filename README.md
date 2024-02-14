@@ -1,12 +1,12 @@
 # DomainProperties
 
-Sample Application for that displays list of rental properties and properties for buyers from Domain
+Sample Application that displays list of rental properties and properties for buyers from Domain
 server.
 
 The key focus of this application is following the Clean architecture using MVVM and the best
 practices in handling interaction between views and data.
 Views are designed and implemented using composeUI and Compose Navigation. Other tech stacks include
-Coroutines, Retrofit, HILT for DI, mockk, JUnit4 and is 100% Kotlin and no fragments.
+Coroutines, Retrofit, HILT for DI, mockk, JUnit4 and is 100% Kotlin; no fragments.
 
 # Screenshots
 
