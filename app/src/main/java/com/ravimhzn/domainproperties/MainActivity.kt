@@ -9,6 +9,7 @@ import com.ravimhzn.domainproperties.navigation.SetUpNavGraph
 import com.ravimhzn.domainproperties.ui.theme.DomainPropertiesTheme
 import com.ravimhzn.domainproperties.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.Serializable
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<MainViewModel>() {

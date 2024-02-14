@@ -19,6 +19,8 @@ composeBomDate = "2024.02.00"
 mockkVersion="1.13.7"
 retrofitVersion = "2.9.0"
 loggingInterceptorVersion = "4.12.0"
+arcCoreTestingVersion = "2.2.0"
+kotlinxCoroutinesTest = "1.7.3"
 
 
 [libraries]
@@ -55,6 +57,8 @@ androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-j
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBomDate" }
 compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 io-mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
+core-testing = { module = "androidx.arch.core:core-testing", version.ref = "arcCoreTestingVersion" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 
 #DI
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }

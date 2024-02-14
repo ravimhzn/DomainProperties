@@ -5,17 +5,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.ravimhzn.domainproperties.framework.State
-import com.ravimhzn.domainproperties.model.PropertyResponse
+import com.ravimhzn.domainproperties.model.RentalPropertyResponse
 import com.ravimhzn.domainproperties.navigation.Screen
 import com.ravimhzn.domainproperties.util.DimensionUtil.contentSpacingSmall
 import com.ravimhzn.domainproperties.viewmodel.MainViewModel
@@ -23,6 +25,9 @@ import java.io.Serializable
 
 @Composable
 fun DomainRentPropertiesView(navHostController: NavHostController, viewModel: MainViewModel) {
+
+    val rentalPropertyData by viewModel.rentalPropertyResponse.collectAsState()
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -33,7 +38,6 @@ fun DomainRentPropertiesView(navHostController: NavHostController, viewModel: Ma
                 .background(Color.Transparent)
         ) {
             MyComposeToolbar(onMenuBuyListener = {
-                //viewModel.getPropertyToBuy()
                 navHostController.navigate(Screen.BUY.route)
             })
 
@@ -42,31 +46,14 @@ fun DomainRentPropertiesView(navHostController: NavHostController, viewModel: Ma
                     .height(contentSpacingSmall)
             )
 
-            val mutableStateData by viewModel.uiState.collectAsState()
-
-            when (mutableStateData) {
-                is State.Loaded -> {
-                    SetUpLazyPropertyList(
-                        (mutableStateData as State.Loaded).data as PropertyResponse
-                    )
-                }
-
-                else -> {
-                    viewModel.emptyState()
+            val searchResults = rentalPropertyData.getFilteredSearchResult()
+            searchResults?.let {
+                LazyColumn {
+                    items(it.size) { index ->
+                        PropertyRowView(it[index])
+                    }
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun SetUpLazyPropertyList(
-    response: PropertyResponse
-) {
-    LazyColumn {
-        val searchResults = response.getFilteredSearchResult()
-        items(searchResults.size) { index ->
-            PropertyRowView(searchResults[index])
         }
     }
 }

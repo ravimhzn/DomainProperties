@@ -63,6 +63,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     testImplementation(libs.hilt.android.testing)
+    testImplementation("junit:junit:4.12")
     kapt(libs.hilt.android.compiler)
 
     // Coil
@@ -76,4 +77,7 @@ dependencies {
     androidTestImplementation(libs.compose.ui.test.junit4)
     debugImplementation(libs.compose.ui.tooling)
     testImplementation(libs.io.mockk)
+    testImplementation(libs.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3")
 }
