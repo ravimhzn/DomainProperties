@@ -15,6 +15,9 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.support.test.runner.AndroidJUnitRunner"
+
     }
     buildFeatures {
         compose = true
@@ -24,7 +27,7 @@ android {
     }
     packaging {
         resources {
-            resources.excludes.add("META-INF/*")
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
     buildTypes {
@@ -39,6 +42,12 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    testOptions{
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 }
 
@@ -70,14 +79,24 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.compose)
 
-    testImplementation(libs.junit)
-    testImplementation(libs.androidx.junit.ktx)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.compose.bom)
-    androidTestImplementation(libs.compose.ui.test.junit4)
-    debugImplementation(libs.compose.ui.tooling)
+//    testImplementation(libs.junit)
+//    testImplementation(libs.androidx.junit.ktx)
+//    androidTestImplementation(libs.androidx.junit)
+//    androidTestImplementation(libs.compose.bom)
+//    androidTestImplementation(libs.compose.ui.test.junit4)
+//    debugImplementation(libs.compose.ui.tooling)
     testImplementation(libs.io.mockk)
-    testImplementation(libs.core.testing)
+//    testImplementation(libs.core.testing)
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    testImplementation("androidx.compose.ui:ui-test-junit4")
+    testImplementation("org.robolectric:robolectric:4.11")
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3")
 }

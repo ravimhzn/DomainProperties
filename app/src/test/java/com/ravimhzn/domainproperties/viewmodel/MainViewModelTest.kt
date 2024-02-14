@@ -6,7 +6,7 @@ import com.ravimhzn.domainproperties.model.Images
 import com.ravimhzn.domainproperties.model.RentalPropertyResponse
 import com.ravimhzn.domainproperties.model.SearchResult
 import com.ravimhzn.domainproperties.repository.DomainPropertyDataSource
-import com.ravimhzn.domainproperties.ui.BaseViewModelTest
+import com.ravimhzn.domainproperties.BaseViewModelTest
 import io.mockk.mockk
 import junit.framework.TestCase.assertNull
 import junit.framework.TestCase.assertTrue
