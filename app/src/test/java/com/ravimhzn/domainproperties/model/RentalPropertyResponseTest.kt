@@ -1,6 +1,6 @@
 package com.ravimhzn.domainproperties.model
 
-import com.ravimhzn.domainproperties.ui.BaseUnitTest
+import com.ravimhzn.domainproperties.BaseUnitTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals

@@ -28,6 +28,7 @@ import com.ravimhzn.domainproperties.util.DimensionUtil.companyLogoHeight
 import com.ravimhzn.domainproperties.util.DimensionUtil.contentSpacing
 import com.ravimhzn.domainproperties.util.DimensionUtil.contentSpacingSmall
 import com.ravimhzn.domainproperties.util.DimensionUtil.textSizeBody
+import com.ravimhzn.domainproperties.util.StringUtils
 
 @Composable
 fun PropertyRowView(results: SearchResult) {
@@ -60,7 +61,7 @@ fun PropertyRowView(results: SearchResult) {
                         .crossfade(true)
                         .placeholder(R.drawable.ic_launcher_background)
                         .build(),
-                    contentDescription = "",
+                    contentDescription = StringUtils.propertyImageContentDesc,
                     modifier = Modifier
                         .fillMaxSize()
                         .weight(1f),
@@ -100,20 +101,12 @@ fun PropertyRowView(results: SearchResult) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(companyLogoHeight),
-                        contentDescription = null,
+                        contentDescription = StringUtils.advertiserImageContentDesc,
                         contentScale = ContentScale.FillBounds
                     )
                 }
             }
 
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun RowPreview() {
-    DomainPropertiesTheme {
-        //PropertyRowView()
     }
 }

@@ -1,4 +1,4 @@
-package com.ravimhzn.domainproperties.ui
+package com.ravimhzn.domainproperties
 
 import androidx.annotation.CallSuper
 import io.mockk.MockKAnnotations
