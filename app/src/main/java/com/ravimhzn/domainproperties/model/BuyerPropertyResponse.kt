@@ -7,12 +7,13 @@ data class BuyerPropertyResponse(
 ) : Serializable {
 
     fun getFilteredSearchResult(): List<SearchResult>? {
+        //Todo
         val filteredList =
             search_results?.filter {
                 it.price == "Contact Agent" || it.price == "Auction" || it.price?.contains(
                     "$"
                 ) == true
             }
-        return filteredList
+        return search_results
     }
 }

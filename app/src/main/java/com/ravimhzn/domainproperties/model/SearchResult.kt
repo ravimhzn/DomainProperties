@@ -13,5 +13,5 @@ data class SearchResult(
     val headline: String,
     val homepass_enabled: Boolean,
     val media: List<Media>,
-    val price: String?
+    val price: String? = ""
 ): Serializable
